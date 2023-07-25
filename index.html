@@ -23,9 +23,6 @@
 
     <input type="submit" value="Submit">
   </form>
-  <div class="col-xl-6 col-lg-6 col-md-6 copyright-box">
-    <p class="copy-text">© La Palma all Rights Reserved. Designed by <a href="https://www.facebook.com/wael.dhaoui.20/" target="_blank">Wael Dhaoui</a></p>
-  </div>
   <script>
     document.getElementById('reservationForm').addEventListener('submit', function (event) {
       event.preventDefault();
@@ -48,9 +45,6 @@
       
       // Open the default email client to send the email
       window.location.href = mailtoLink;
-
-      // Optionally, you can show a success message after form submission
-      alert('Reservation submitted successfully!');
     });
   </script>
 </body>
