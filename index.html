@@ -4,72 +4,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <title>Reservation Form</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      margin: 0;
-      padding: 0;
-    }
-
-    h1 {
-      color: #0056b3;
-      text-align: center;
-      padding: 20px 0;
-    }
-
-    form {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    input[type="text"],
-    input[type="number"],
-    input[type="tel"] {
-      width: 94%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-    }
-
-    input[type="submit"] {
-      background-color: #0056b3;
-      color: #ffffff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #004080;
-    }
-
-    /* Responsive Styles */
-    @media screen and (max-width: 480px) {
-      form {
-        padding: 10px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Reservation Form</h1>
-  <a href="./send_email">Clique here</a>
-  <form action="./send_email" method="POST">
+
+  <form id="reservationForm" action="#">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
 
@@ -81,5 +23,35 @@
 
     <input type="submit" value="Submit">
   </form>
+  <div class="col-xl-6 col-lg-6 col-md-6 copyright-box">
+    <p class="copy-text">© La Palma all Rights Reserved. Designed by <a href="https://www.facebook.com/wael.dhaoui.20/" target="_blank">Wael Dhaoui</a></p>
+  </div>
+  <script>
+    document.getElementById('reservationForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      
+      // Retrieve form data
+      const formData = new FormData(event.target);
+      const name = formData.get('name');
+      const num_of_person = formData.get('num_of_person');
+      const phone = formData.get('phone');
+      
+      // Compose email message
+      const subject = `New Reservation from ${name}`;
+      const body = `Name: ${name}\nNumber of Persons: ${num_of_person}\nPhone Number: ${phone}`;
+      
+      // Set the "From" field
+      const from = 'exemple1@gmail.com';
+      
+      // Create a mailto link
+      const mailtoLink = `mailto:gamerwael090@gmail.com?from=${encodeURIComponent(from)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Open the default email client to send the email
+      window.location.href = mailtoLink;
+
+      // Optionally, you can show a success message after form submission
+      alert('Reservation submitted successfully!');
+    });
+  </script>
 </body>
 </html>
