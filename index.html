@@ -83,7 +83,7 @@
       const body = `Name: ${name}\nNumber of Persons: ${num_of_person}\nPhone Number: ${phone}\nDate: ${date}\Time: ${time}`;
       
       // Create a mailto link
-      const mailtoLink = `mailto:gamerwael090@gmail.com?from=${encodeURIComponent(from)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoLink = `mailto:gamerwael090@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
       // Open the default email client to send the email
       window.location.href = mailtoLink;
