@@ -1,8 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #d5eafc;
     margin: 0;
     padding: 0;
+    color: #515a6e;
   }
 
   h1 {
@@ -12,12 +13,23 @@ body {
   }
 
   form {
-    max-width: 400px;
+    max-width: 340px;
     margin: 0 auto;
-    background-color: #ffffff;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #fafafe;
+    border-radius: 10px;
+  }
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .logo img {
+    width: 100%;
+    height: 100%;
   }
 
   label {
@@ -62,3 +74,4 @@ body {
       padding: 10px;
     }
   }
+  
