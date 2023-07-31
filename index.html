@@ -49,20 +49,33 @@
     <div class="logo">
       <img src="img/logo.jpg"/>
     </div>
-    <label for="name">Name:</label>
+    <label for="name">Name(Nom):</label>
     <input type="text" id="name" name="name" required>
 
-    <label for="num_of_person">Number of Persons:</label>
+    <label for="num_of_person">Number of Persons(Nombre de personnes):</label>
     <input type="number" id="num_of_person" name="num_of_person" min="1" required>
 
-    <label for="phone">Phone Number:</label>
+    <label for="phone">Phone Number(Numéro de téléphone):</label>
     <input type="tel" id="phone" name="phone" required>
 
     <label for="date">Date:</label>
     <input type="date" id="date" name="date" required>
 
-    <label for="time">Time:</label>
-    <input type="time" id="time" name="time" required>
+    <label for="time">Time(Heure):</label>
+    <select name="time" required>
+      <optgroup label="Sunrise(Lever du Soleil)">
+        <option value="04:30 - 5:30">04:30 - 5:30</option>
+        <option value="05:30 - 06:30">05:30 - 06:30</option>
+        <option value="07:00 - 08:00">07:00 - 08:00</option>
+        <option value="09:30 -10:30">09:30 -10:30</option>
+      </optgroup>
+      <optgroup label="Noon(Midi)">
+        <option value="11:00 - 12:00">11:00 - 12:00</option>
+      </optgroup>
+      <optgroup label="Sunset(Coucher du Soleil)">
+        <option value="18 :00 -19:30">18 :00 -19:30</option>
+      </optgroup>
+    </select>
 
     <input type="submit" value="Submit">
   </form>
@@ -77,13 +90,27 @@
       const phone = formData.get('phone');
       const date = formData.get('date');
       const time = formData.get('time');
+
+
+      // Convert the date input value to a Date object
+      const selectedDate = new Date(date);
+
+      // Get today's date
+      const today = new Date();
+
+      // Check if the selected date is less than today
+      if (selectedDate < today) {
+        // Show an error message or perform any other desired action
+        alert('Date invalide. Veuillez sélectionner une date ultérieure à aujourd\'hui.');
+        return; // Prevent form submission
+      }
       
       // Compose email message
       const subject = `New Reservation from ${name}`;
-      const body = `Name: ${name}\nNumber of Persons: ${num_of_person}\nPhone Number: ${phone}\nDate: ${date}\Time: ${time}`;
+      const body = `Name: ${name}\nNumber of Persons: ${num_of_person}\nPhone Number: ${phone}\nDate: ${date}\nTime: ${time}`;
       
       // Create a mailto link
-      const mailtoLink = `mailto:gamerwael090@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoLink = `mailto:paddleboardzarzis@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
       // Open the default email client to send the email
       window.location.href = mailtoLink;
